@@ -19,3 +19,12 @@ Minimal reproducible example to demonstrate significant inconsistencies sometime
 |macos_R4_1_1         |0.48348136          |0.48348136         |0.99823370        |0.99823370         |0.99823370          |
 |ubuntu_R4_1_1        |0.48346169          |0.48346169         |0.99823124        |0.99823124         |0.99823124          |
 |windows_R4_1_1       |0.48343821          |0.48343821         |0.99823314        |0.99823314         |0.99823314          |
+
+### BLAS/LAPACK library implementations used in our environments
+ - Ubuntu uses the R-internal "reference (Fortran) implementation" `libRblas.so` and `libRlapack.so`.
+   - Appears to be derived from the Netlib implementation (version unknown) with some "tuning".
+ - Debian uses `libopenblasp-r0.3.5.so`.
+   - An OpenBLAS pthread implementation version 0.3.5 (includes optimised LAPACK, version unknown).
+ - The cluster uses `libsci_gnu_82_mp.so.5.0` from module `cray-libsci/20.09.1`
+   - Appears from Module help to be Netlib LAPACK 3.6.1, BLAS version unknown.
+ - Windows and macOS use the R-internal implementations `libRblas.so` and `libRlapack.so`.
